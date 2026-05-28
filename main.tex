@@ -1,0 +1,125 @@
+% !TEX program = lualatex
+% !LW recipe=latexmk (lualatex)
+% Compile with LaTeX Workshop/Cursor on save, or run:
+%   latexmk -lualatex main.tex
+
+% kao.sty loads hyphenat; pass htt here so \texttt can break across lines.
+\PassOptionsToPackage{htt}{hyphenat}
+
+\documentclass[
+	fontsize=10pt,
+	twoside=false,
+	numbers=noenddot,
+]{kaobook}
+
+\usepackage[american]{babel}
+\usepackage[english=american]{csquotes}
+
+\usepackage[
+	citestyle=authoryear-comp,
+	bibstyle=authoryear,
+	sorting=nyt,
+	maxcitenames=2,
+	mincitenames=1,
+	maxbibnames=99,
+	uniquelist=false,
+	uniquename=false,
+	natbib=true,
+]{kaobiblio}
+\addbibresource{main.bib}
+\let\cite=\parencite
+
+\usepackage[framed=true]{kaotheorems}
+\usepackage{kaorefs}
+
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\usepackage{iftex}
+\ifPDFTeX
+	\usepackage{libertine}
+	\newcommand*{\headingfont}{\fontfamily{LinuxBiolinumT-LF}\selectfont}
+\else
+	\usepackage{fontspec}
+	\IfFontExistsTF{Linux Biolinum O}{%
+		\newfontfamily\biolinumfont{Linux Biolinum O}[
+			Ligatures=TeX,
+			BoldFont={Linux Biolinum O Bold},
+			ItalicFont={Linux Biolinum O Italic},
+		]%
+	}{%
+		\newfontfamily\biolinumfont{Latin Modern Roman}%
+	}
+	\newcommand*{\headingfont}{\biolinumfont}
+\fi
+
+\addtokomafont{part}{\headingfont}
+\addtokomafont{partentry}{\headingfont}
+\addtokomafont{chapter}{\headingfont}
+\addtokomafont{chapterentry}{\headingfont}
+\addtokomafont{section}{\headingfont}
+\addtokomafont{subsection}{\headingfont}
+\addtokomafont{subsubsection}{\headingfont}
+
+\graphicspath{{figs/}}
+\makeindex[columns=3, title=Alphabetical Index, intoc]
+% Uncomment when using glossary or nomenclature entries.
+% \makeglossaries
+% \makenomenclature
+
+\input{macros}
+
+\begin{document}
+
+\subject{Master's Thesis}
+\title[Short Thesis Title]{A Minimal Thesis Template}
+\subtitle{Replace this subtitle with the project topic}
+\author{Author Name}
+\date{\today}
+\publishers{%
+	Advisor: Prof.\ Advisor Name\\
+	Co-advisor: Dr.\ Co-advisor Name\\
+	Department or Lab Name
+}
+
+\frontmatter
+\maketitle
+
+\input{frontmatter/abstract}
+\input{frontmatter/acknowledgements}
+
+\begingroup
+\etocclasstocstyle
+\etocstandardlines
+\setcounter{tocdepth}{\sectiontocdepth}
+\tableofcontents
+% \listoffigures
+% \listoftables
+\endgroup
+
+\mainmatter
+\setchapterstyle{kao}
+
+\part{Thesis Body}
+\input{chapters/introduction}
+\input{chapters/examples}
+
+\part{Results}
+\input{chapters/results}
+\input{chapters/conclusion}
+
+\printbibliography
+
+\appendix
+\part{Appendix}
+\input{chapters/appendix}
+
+% Optional supporting lists. Uncomment when used.
+% \printnomenclature
+% \printglossary[title=Special Terms, toctitle=List of Terms]
+% \printglossary[type=\acronymtype,title=Abbreviations, toctitle=List of Abbreviations]
+% \printindex
+
+\end{document}

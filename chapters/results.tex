@@ -1,0 +1,21 @@
+% !TEX root = ../main.tex
+
+\chapter{Results}
+\label{ch:results}
+
+Use this chapter for the core findings. A short equation can stay in the text
+column:
+\[
+	\calL(\theta) = \E[(x,y) \sim \calD]{\ell(f_\theta(x), y)}.
+\]
+
+For equations that need more horizontal room, use the kaobook
+\texttt{wideequation} environment:
+\begin{wideequation}
+	\Argmin_{\theta \in \R^d}
+	\E[(x,y) \sim \calD]{\ell(f_\theta(x), y)}
+	+ \lambda \lVert \theta \rVert_2^2.
+\end{wideequation}
+
+Discuss what the result means, then point to the supporting details in
+appendix~\ref{app:additional-material}.

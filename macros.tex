@@ -1,0 +1,41 @@
+% Shared thesis commands.
+
+\DeclareMathOperator*{\Eop}{\mathbb{E}}
+\DeclareMathOperator*{\Varop}{\mathbb{V}}
+\DeclareMathOperator*{\Argmax}{arg\,max}
+\DeclareMathOperator*{\Argmin}{arg\,min}
+
+\NewDocumentCommand{\E}{o m}{%
+  \IfNoValueTF{#1}{%
+    \Eop\!\left[#2\right]%
+  }{%
+    \Eop_{\substack{#1}}\!\left[#2\right]%
+  }%
+}
+\NewDocumentCommand{\Var}{o m}{%
+  \IfNoValueTF{#1}{%
+    \Varop\!\left[#2\right]%
+  }{%
+    \Varop_{\substack{#1}}\!\left[#2\right]%
+  }%
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calL}{\mathcal{L}}
+
+% A simple placeholder for examples. Replace this with \includegraphics when
+% using real figure files.
+\newcommand{\placeholderfigure}[2][\linewidth]{%
+  \begin{tikzpicture}
+    \node[
+      draw=black!35,
+      fill=black!3,
+      rounded corners=2pt,
+      minimum width=#1,
+      minimum height=#2,
+      align=center,
+      inner sep=0pt
+    ] {Example figure\\\texttt{\string\includegraphics}};
+  \end{tikzpicture}%
+}

@@ -1,0 +1,74 @@
+% !TEX root = ../main.tex
+
+\chapter{Figures and Tables}
+\label{ch:examples}
+
+This chapter is intentionally practical: it contains the small and full-width
+float patterns that most thesis projects need. Replace the placeholder drawings
+with real files once figures are available.
+
+\section{Figures}
+\label{sec:figures}
+
+\begin{figure}
+	\centering
+	\placeholderfigure[0.78\linewidth]{3.5cm}
+	\caption{A regular figure. Its caption sits in the margin in the standard
+	kaobook layout. Use this for figures that fit naturally in the text column.}
+	\label{fig:regular-figure}
+\end{figure}
+
+Reference regular figures with \texttt{\string\ref}: Figure~\ref{fig:regular-figure}
+is a text-column float. With an image file, use \texttt{\string\includegraphics}
+with a width such as \texttt{\string\textwidth} or \texttt{0.8\string\linewidth}.
+
+\begin{figure*}
+	\centering
+	\placeholderfigure[0.92\linewidth]{4.2cm}
+	\caption{A full-width figure. Use \texttt{figure*} when the content needs
+	the text column and the margin together.}
+	\label{fig:full-width-figure}
+\end{figure*}
+
+Figure~\ref{fig:full-width-figure} uses the full available page width. This is
+useful for multi-panel figures, dense plots, or diagrams with long labels.
+
+\section{Tables}
+\label{sec:tables}
+
+\begin{table}
+	\centering
+	\begin{tabular}{lrr}
+		\toprule
+		Method & Score & Time \\
+		\midrule
+		Baseline & 0.71 & 12.4 \\
+		Proposed & 0.83 & 10.9 \\
+		\bottomrule
+	\end{tabular}
+	\caption{A regular table for compact results. Keep column names short and
+	put details in the caption or surrounding text.}
+	\label{tab:regular-table}
+\end{table}
+
+Table~\ref{tab:regular-table} is a normal text-column table.
+
+\begin{table*}
+	\centering
+	\small
+	\begin{tabularx}{0.95\linewidth}{lrrrrX}
+		\toprule
+		Setting & Train & Valid & Test & Runtime & Notes \\
+		\midrule
+		Small & 100 & 20 & 20 & 1.2 min & Useful for smoke tests and examples. \\
+		Medium & 1000 & 200 & 200 & 8.4 min & Fits comfortably in a wider table. \\
+		Large & 10000 & 2000 & 2000 & 51.0 min & Use wide tables for many columns or longer notes. \\
+		\bottomrule
+	\end{tabularx}
+	\caption{A full-width table. Use \texttt{table*} for wide result summaries
+	or tables with explanatory columns.}
+	\label{tab:full-width-table}
+\end{table*}
+
+Table~\ref{tab:full-width-table} demonstrates the wide-table layout and
+\texttt{tabularx} for a flexible notes column.

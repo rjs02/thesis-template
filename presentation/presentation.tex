@@ -1,0 +1,52 @@
+% !TEX program = lualatex
+% !LW recipe=latexmk (lualatex)
+% Compile with LaTeX Workshop/Cursor on save, or run:
+%   latexmk -cd -lualatex presentation/presentation.tex
+
+\documentclass[10pt,aspectratio=169]{beamer}
+
+\usetheme{Madrid}
+\usecolortheme{default}
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage[american]{babel}
+\usepackage[english=american]{csquotes}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\usepackage[style=authoryear,maxcitenames=1,backend=biber]{biblatex}
+\addbibresource{../main.bib}
+
+\title{A Minimal Thesis Presentation}
+\subtitle{Short defense or group-meeting subtitle}
+\author{Author Name}
+\institute{Department or Lab Name}
+\date{\today}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\begin{frame}{Structure}
+	\tableofcontents
+\end{frame}
+
+\section{Main Example}
+\input{slides/examples}
+
+\section{References}
+\begin{frame}[allowframebreaks]{References}
+	\printbibliography
+\end{frame}
+
+\appendix
+\section{Backup}
+\begin{frame}{Backup Slide}
+	Backup slides go after \texttt{\string\appendix}; beamer keeps them separate
+	from the main talk structure.
+\end{frame}
+
+\end{document}

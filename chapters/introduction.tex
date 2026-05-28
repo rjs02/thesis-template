@@ -1,0 +1,24 @@
+% !TEX root = ../main.tex
+
+\chapter{Introduction}
+\label{ch:introduction}
+
+Start each chapter in its own file and include it from \texttt{main.tex}. This
+keeps the root file focused on document structure and package configuration.
+
+\section{Cross References}
+\label{sec:cross-references}
+
+Use labels for chapters, sections, figures, tables, equations, and appendix
+material. For example, chapter~\ref{ch:examples} shows the figure and table
+patterns, while appendix~\ref{app:additional-material} contains supporting
+material. Citations are handled by \texttt{biblatex}; here is a textual citation
+with \textcite{knuth1984texbook} and a parenthetical citation \cite{lamport1994latex}.
+
+\begin{definition}[Reusable command]
+A reusable command is a short macro in \texttt{macros.tex} that captures
+notation used throughout the thesis.
+\end{definition}
+
+For example, \(\E[x \sim p]{x^2}\) is defined once in \texttt{macros.tex} and
+can then be used consistently in every chapter.

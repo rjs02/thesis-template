@@ -1,0 +1,52 @@
+# Local agent/editor state
+.agents/
+.codex/
+.cursor/plans/
+
+# LaTeX auxiliary files
+*.aux
+*.bbl
+*.bbl-SAVE-ERROR
+*.bcf
+*.bcf-SAVE-ERROR
+*.blg
+*.fdb_latexmk
+*.fls
+*.glg
+*.glo
+*.gls
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lot
+*.mw
+*.nav
+*.nlg
+*.nlo
+*.nls
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+*.xdy
+*-blx.bib
+*-converted-to.*
+_minted*/
+latex.out/
+svg-inkscape/
+
+# Keep generated PDFs out by default; remove this if the repository should
+# publish compiled artifacts.
+*.pdf
+
+# Editor backups
+*~
+*.bak
+*.sav
+*.swp
