@@ -34,6 +34,9 @@ skips external image rendering and marks overfull boxes. It is useful while
 editing text in figure-heavy chapters. `make watch` runs `latexmk -pvc` for a
 terminal-based continuous build.
 
+The repository intentionally tracks `main.pdf` and
+`presentation/presentation.pdf` as rendered examples of the expected output.
+
 ## Local Setup
 
 This template is tested with LuaLaTeX through `latexmk`.
@@ -88,7 +91,8 @@ not installed and fontconfig is substituting a fallback.
 ## Structure
 
 - `main.tex`: thesis root file and document structure.
-- `frontmatter/`: abstract and acknowledgements.
+- `frontmatter/`: abstract, acknowledgements, and the unsigned ETH declaration
+  of originality PDF included at the end of the thesis.
 - `chapters/`: thesis chapters and appendix content.
 - `macros.tex`: shared notation and helper commands.
 - `main.bib`: bibliography database.

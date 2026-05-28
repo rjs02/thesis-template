@@ -41,10 +41,9 @@ _minted*/
 latex.out/
 svg-inkscape/
 
-# Keep compiled PDFs out by default. Figure PDFs under figs/ remain trackable.
-/main.pdf
+# Keep the draft build output local. The public preview PDFs main.pdf and
+# presentation/presentation.pdf are tracked intentionally.
 /main-draft.pdf
-/presentation/presentation.pdf
 
 # Editor backups
 *~
