@@ -1,7 +1,7 @@
 % !TEX program = lualatex
 % !LW recipe=latexmk (lualatex)
 % Compile with LaTeX Workshop/Cursor on save, or run:
-%   latexmk -lualatex main.tex
+%   latexmk -cd -lualatex main.tex
 
 % kao.sty loads hyphenat; pass htt here so \texttt can break across lines.
 \PassOptionsToPackage{htt}{hyphenat}
@@ -33,9 +33,17 @@
 \usepackage{kaorefs}
 
 \usepackage{booktabs}
+\usepackage{svg}
 \usepackage{tabularx}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning}
+
+% Draft builds skip external image rendering and mark overfull boxes. Compile
+% main-draft.tex for this mode; use main.tex for final output.
+\ifdefined\thesisdraft
+	\setkeys{Gin}{draft}
+	\overfullrule=5pt
+\fi
 
 \usepackage{iftex}
 \ifPDFTeX
@@ -71,18 +79,53 @@
 
 \input{macros}
 
+% For faster chapter-focused passes, uncomment and keep only the chapters you
+% are actively editing. Compile once without \includeonly before final checks.
+% \includeonly{chapters/introduction,chapters/examples}
+
 \begin{document}
 
 \subject{Master's Thesis}
-\title[Short Thesis Title]{A Minimal Thesis Template}
-\subtitle{Replace this subtitle with the project topic}
+\title[Short Thesis Title]{Thesis Title\\[-0.35em]with Manual Line Breaks\\[0.15em]for the Title Page}
 \author{Author Name}
 \date{\today}
-\publishers{%
-	Advisor: Prof.\ Advisor Name\\
-	Co-advisor: Dr.\ Co-advisor Name\\
-	Department or Lab Name
+\newcommand{\thesisadvisors}{%
+	\normalsize Advisor Name\\
+	\normalsize Co-advisor Name\\
+	\normalsize Prof.\ Dr.\ Supervisor Name
 }
+
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{titlepage}
+	\begin{minipage}[t]{\textwidth}
+		\newcommand{\titleETHLogoHeight}{0.68cm}
+		\newcommand{\titleLabLogoHeight}{0.95cm}
+		\newcommand{\titleLogoGap}{0.32cm}
+		\makebox[\textwidth]{%
+			\raisebox{-0.5\height}{\includesvg[height=\titleETHLogoHeight]{eth_logo_kurz_pos.svg}}%
+			\hfill
+			\raisebox{-0.5\height}{\includesvg[height=\titleLabLogoHeight]{spylab_logo.svg}}%
+			\hspace{\titleLogoGap}%
+			\raisebox{-0.5\height}{\includegraphics[height=\titleLabLogoHeight]{las_logo.png}}%
+		}
+	\end{minipage}
+	\vspace*{5.35cm}
+	\begin{center}
+		{\headingfont\LARGE\textbf{\@subject}}\\[1cm]
+		{\headingfont\fontsize{28}{32}\selectfont\textbf{\@title}}\\[1.4cm]
+		\large\@author\\
+		\large\@date
+	\end{center}
+	\vfill
+	\begin{center}
+		\normalsize\textbf{Advisors}\\
+		\thesisadvisors
+	\end{center}
+	\vspace*{-0.3cm}
+\end{titlepage}
+}
+\makeatother
 
 \frontmatter
 \maketitle
@@ -103,18 +146,18 @@
 \setchapterstyle{kao}
 
 \part{Thesis Body}
-\input{chapters/introduction}
-\input{chapters/examples}
+\include{chapters/introduction}
+\include{chapters/examples}
 
 \part{Results}
-\input{chapters/results}
-\input{chapters/conclusion}
+\include{chapters/results}
+\include{chapters/conclusion}
 
 \printbibliography
 
 \appendix
 \part{Appendix}
-\input{chapters/appendix}
+\include{chapters/appendix}
 
 % Optional supporting lists. Uncomment when used.
 % \printnomenclature

@@ -1,0 +1,47 @@
+% Thesis macros for beamer - copy from ../macros.tex (excludes \note, reserved by beamer)
+\DeclareMathOperator*{\Eop}{\mathbb{E}}
+\DeclareMathOperator*{\Varop}{\mathbb{V}}
+\DeclareMathOperator*{\Covop}{\mathrm{Cov}}
+\DeclareMathOperator*{\Argmax}{arg\,max}
+\DeclareMathOperator*{\Argmin}{arg\,min}
+\DeclareMathOperator*{\Max}{max}
+\DeclareMathOperator*{\Min}{min}
+
+\NewDocumentCommand{\E}{o m}{%
+  \IfNoValueTF{#1}{%
+    \Eop\!\left[#2\right]%
+  }{%
+    \Eop_{\substack{#1}}\!\left[#2\right]%
+  }%
+}
+\NewDocumentCommand{\Var}{o m}{%
+  \IfNoValueTF{#1}{%
+    \Varop\!\left[#2\right]%
+  }{%
+    \Varop_{\substack{#1}}\!\left[#2\right]%
+  }%
+}
+\NewDocumentCommand{\Cov}{o m}{%
+  \IfNoValueTF{#1}{%
+    \Covop\!\left[#2\right]%
+  }{%
+    \Covop_{\substack{#1}}\!\left[#2\right]%
+  }%
+}
+
+\newcommand{\piref}{\pi_{\mathrm{ref}}}
+\newcommand{\pio}{\pi^{*}}
+\newcommand{\pirlhf}{\pi_{\mathrm{RLHF}}}
+\newcommand{\pinlhf}{\pi_{\mathrm{NLHF}}}
+\newcommand{\piip}{\pi_{\mathrm{IPO}}}
+\newcommand{\pidpo}{\pi_{\mathrm{DPO}}}
+\newcommand{\rbt}{r_{\mathrm{BT}}}
+
+\newcommand{\kl}[2]{\operatorname{KL}\!\left(#1 \,\middle\|\, #2\right)}
+
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\R}{\mathbb{R}}

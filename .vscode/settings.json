@@ -7,9 +7,27 @@
         "-synctex=1",
         "-interaction=nonstopmode",
         "-file-line-error",
+        "-shell-escape",
         "-lualatex",
         "-cd",
         "%DOC%"
+      ],
+      "env": {
+        "TEXMFVAR": "/tmp/texlive-texmf-var",
+        "TEXMFCONFIG": "/tmp/texlive-texmf-config"
+      }
+    },
+    {
+      "name": "latexmk-lualatex-draft",
+      "command": "latexmk",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-shell-escape",
+        "-lualatex",
+        "-cd",
+        "main-draft.tex"
       ],
       "env": {
         "TEXMFVAR": "/tmp/texlive-texmf-var",
@@ -21,6 +39,10 @@
     {
       "name": "latexmk (lualatex)",
       "tools": ["latexmk-lualatex"]
+    },
+    {
+      "name": "latexmk (lualatex draft thesis)",
+      "tools": ["latexmk-lualatex-draft"]
     }
   ],
   "latex-workshop.latex.recipe.default": "latexmk (lualatex)",

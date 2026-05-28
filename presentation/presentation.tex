@@ -5,30 +5,104 @@
 
 \documentclass[10pt,aspectratio=169]{beamer}
 
-\usetheme{Madrid}
-\usecolortheme{default}
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
+\setbeamercolor{background canvas}{bg=white}
+
+\usepackage{fontspec}
+\setmainfont{Latin Modern Sans}[Scale=0.95]
+\setsansfont{Latin Modern Sans}[Scale=0.95]
+\renewcommand*\familydefault{\sfdefault}
+\newfontfamily\headingfont{Linux Biolinum O}[Scale=0.95]
+\setbeamerfont{title}{family=\headingfont,size=\Large}
+\setbeamerfont{subtitle}{size=\normalsize}
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{institute}{size=\footnotesize}
+\setbeamerfont{date}{size=\footnotesize}
+\setbeamerfont{frametitle}{family=\headingfont,size=\normalsize}
+\setbeamerfont{section title}{family=\headingfont}
+\setbeamerfont{framesubtitle}{family=\headingfont}
+\usefonttheme[onlymath]{serif}
+
 \setbeamertemplate{navigation symbols}{}
 
 \usepackage[american]{babel}
 \usepackage[english=american]{csquotes}
+\usepackage{amsmath}
+\usepackage{array}
 \usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\newcommand{\descriptionsize}{\footnotesize}
+
+\usepackage{svg}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning}
+\usetikzlibrary{arrows.meta,overlay-beamer-styles,decorations.pathreplacing}
+\usetikzlibrary{positioning,quotes,shapes,decorations,matrix}
+\tikzset{>=latex}
+
+\definecolor{metropolis-bluegray}{HTML}{23373B}
+\definecolor{rlhfblue}{HTML}{1F77B4}
+\definecolor{nlhforange}{HTML}{FF7F0E}
+\definecolor{softgreen}{HTML}{2A7F62}
+\definecolor{softred}{HTML}{D95F02}
+\definecolor{softgray}{HTML}{7F7F7F}
+\setbeamercolor{normal text}{fg=metropolis-bluegray,bg=white}
+
+\graphicspath{{../figs/}}
+\input{thesis-macros}
 
 \usepackage[style=authoryear,maxcitenames=1,backend=biber]{biblatex}
 \addbibresource{../main.bib}
+\renewcommand*{\nameyeardelim}{\addcomma\addspace}
 
-\title{A Minimal Thesis Presentation}
-\subtitle{Short defense or group-meeting subtitle}
+\setbeamerfont{block title}{family=\headingfont,size=\normalsize}
+\setbeamerfont{block body}{size=\footnotesize}
+\setbeamertemplate{blocks}[bg=black]
+\setbeamercolor{block body}{bg=white,fg=metropolis-bluegray}
+\setbeamercolor{block body alerted}{bg=white,fg=metropolis-bluegray}
+\setbeamercolor{block body example}{bg=white,fg=metropolis-bluegray}
+\setbeamerfont{itemize/enumerate body}{size=\footnotesize}
+\setbeamerfont{itemize/enumerate subbody}{size=\scriptsize}
+\setbeamerfont{footline}{size=\fontsize{6.8}{7.3}\selectfont}
+\setbeamercolor{author in head/foot}{bg=white,fg=gray!70}
+\setbeamercolor{date in head/foot}{bg=white,fg=gray!70}
+\newcommand{\insertframesource}{}
+\newcommand{\framecite}[1]{\gdef\insertframesource{\parencite{#1}}}
+\AtBeginEnvironment{frame}{\gdef\insertframesource{}}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.86\paperwidth,ht=2.6ex,dp=1.1ex,leftskip=1.1em]{author in head/foot}%
+      {\usebeamerfont{footline}\insertframesource}%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.14\paperwidth,ht=2.6ex,dp=1.1ex,rightskip=1.1em plus 1fil]{date in head/foot}%
+      {\usebeamerfont{footline}\hfill\insertframenumber}%
+    \end{beamercolorbox}%
+  }%
+}
+
+\title{Thesis Title with Manual Line Breaks}
+\subtitle{Master's Thesis}
 \author{Author Name}
-\institute{Department or Lab Name}
-\date{\today}
+\institute{\textbf{Advisors:}\\Advisor Name, Prof.\ Dr.\ Supervisor Name\\Co-advisor Name}
+\date{}
+
+\titlegraphic{%
+  \vfill
+  \begin{minipage}[b]{\textwidth}
+    \raisebox{-0.1cm}{\includesvg[height=0.32cm]{eth_logo_kurz_pos.svg}}
+    \hfill
+    \includesvg[height=0.32cm]{spylab_logo.svg}\hspace{0.2cm}\includegraphics[height=0.32cm]{las_logo.png}
+  \end{minipage}
+}
 
 \begin{document}
 
-\begin{frame}
-	\titlepage
-\end{frame}
+\maketitle
 
 \begin{frame}{Structure}
 	\tableofcontents
@@ -43,7 +117,6 @@
 \end{frame}
 
 \appendix
-\section{Backup}
 \begin{frame}{Backup Slide}
 	Backup slides go after \texttt{\string\appendix}; beamer keeps them separate
 	from the main talk structure.

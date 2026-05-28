@@ -12,16 +12,11 @@
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{Figure and Table}
+\begin{frame}{Reward Hacking Example}
 	\begin{columns}[T,onlytextwidth]
 		\column{0.52\textwidth}
 		\centering
-		\begin{tikzpicture}[scale=0.72]
-			\draw[->] (0,0) -- (5.4,0) node[right] {Step};
-			\draw[->] (0,0) -- (0,3.2) node[above] {Score};
-			\draw[thick,blue] plot[smooth] coordinates {(0.4,0.5) (1.2,1.1) (2.2,1.7) (3.2,2.0) (4.8,2.6)};
-			\draw[thick,orange] plot[smooth] coordinates {(0.4,0.7) (1.2,1.0) (2.2,1.2) (3.2,1.35) (4.8,1.5)};
-		\end{tikzpicture}
+		\includegraphics[width=\linewidth]{reward_hacking.png}
 
 		\column{0.43\textwidth}
 		\centering
@@ -34,4 +29,5 @@
 			\bottomrule
 		\end{tabular}
 	\end{columns}
+	\framecite{fluri_perils_2025}
 \end{frame}

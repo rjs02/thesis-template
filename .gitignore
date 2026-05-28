@@ -41,9 +41,10 @@ _minted*/
 latex.out/
 svg-inkscape/
 
-# Keep generated PDFs out by default; remove this if the repository should
-# publish compiled artifacts.
-*.pdf
+# Keep compiled PDFs out by default. Figure PDFs under figs/ remain trackable.
+/main.pdf
+/main-draft.pdf
+/presentation/presentation.pdf
 
 # Editor backups
 *~
